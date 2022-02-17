@@ -7,19 +7,12 @@ public class ResetAtDying : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private GameObject spawnPoint;
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-
-            
-            target.GetComponent<CharacterController>().enabled = false;
+            Debug.Log("Jugador ha caido, volver al Spawn");
             target.transform.position = spawnPoint.transform.position;
-            target.GetComponent<CharacterController>().enabled = true;
-
-
-
         }
-    } 
+    }
 }

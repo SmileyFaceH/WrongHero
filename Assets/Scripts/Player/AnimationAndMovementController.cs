@@ -7,33 +7,23 @@ public class AnimationAndMovementController : MonoBehaviour
 {
 
     PlayerInput playerInput;
-    public CharacterController characterController;
-    // Movement
+    CharacterController characterController;
+
     Vector2 currentMovementInput;
-    public Vector3 currentMovement;
-    public Vector3 currentRunMovement;
+    Vector3 currentMovement; 
+    Vector3 currentRunMovement; 
     bool isMovementPressed;
     bool isRunPressed;
-    int isWalkingHash;
-    int isRunningHash;   
     Animator animator;
-    [SerializeField] private float rotationFactorPerFrame = 8f;
-    [SerializeField] private float runMultiplier = 10.0f;
-    [SerializeField] private int speed;
-
-    //Attacking 
-    [SerializeField] private KeyCode attackingKey;
-    [SerializeField] private bool isAttacking;
-    [SerializeField] private BoxCollider swordCollider;
-    [SerializeField] private BoxCollider buffedSwordCollider;
-
-    Animator anim;
-
-    //Shield
+    float rotationFactorPerFrame = 8f;
+    public float runMultiplier = 10.0f;
+    public int speed; 
+    int isWalkingHash;
+    int isRunningHash; 
 
 
 
-    
+
 
     void Awake()
     {
@@ -52,80 +42,16 @@ public class AnimationAndMovementController : MonoBehaviour
         playerInput.CharacterControls.Run.performed+= onRun;
     }
 
-    private void Start()
-    {
-        
-    }
-    void FixedUpdate()
-    {
-        handleGravity();
-        handleRotation();
-        handleAnimation();
-        if (isRunPressed)
-        {
-            characterController.Move(currentRunMovement * Time.deltaTime);
-        }
-        else
-        {
-            characterController.Move(currentMovement * Time.deltaTime);
-        }
 
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(attackingKey) && !isAttacking)
-        {
-            animator.SetTrigger("attacking");
-            isAttacking = true;
-            playerInput.CharacterControls.Move.Disable();
-        }
-    }
-
-
-    public void StopAttacking()
-    {
-        playerInput.CharacterControls.Move.Enable();
-        isAttacking = false;
-            
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "EnemyWeapon")
-        {
-            if (anim != null)
-            {
-                anim.Play("GetHit");
-            }
-        }
-    }
-
-    void BuffedSwordColliderOn()
-    {
-        buffedSwordCollider.enabled = true;
-    }
-
-    void BuffedSwordColliderOff()
-    {
-        buffedSwordCollider.enabled = false; 
-    }
-
-    void SwordColliderOn()
-    {
-        swordCollider.enabled = true;
-    }
-
-    void SwordColliderOff()
-    {
-        swordCollider.enabled = false;
-    }
-
+    
     void onRun (InputAction.CallbackContext context)
     {
         isRunPressed = context.ReadValueAsButton();
     }
+
+
+
+
 
     void handleRotation()
     {
@@ -145,6 +71,10 @@ public class AnimationAndMovementController : MonoBehaviour
 
     }
 
+
+
+
+
     void onMovementInput (InputAction.CallbackContext context)
     {
         currentMovementInput = context.ReadValue<Vector2>();
@@ -154,6 +84,10 @@ public class AnimationAndMovementController : MonoBehaviour
         currentRunMovement.z = currentMovementInput.y * runMultiplier;
         isMovementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
     }
+
+
+
+
 
     void handleAnimation()
     {
@@ -199,6 +133,29 @@ public class AnimationAndMovementController : MonoBehaviour
             currentRunMovement.y += gravity * Time.deltaTime * 2.0f;
         }
     }
+
+
+
+    void FixedUpdate()
+    {
+        handleGravity();
+        handleRotation();
+        handleAnimation();
+        if (isRunPressed)
+        {
+            characterController.Move(currentRunMovement * Time.deltaTime);
+        } 
+        else
+        {
+            characterController.Move(currentMovement * Time.deltaTime);
+        }
+        
+        
+    }
+
+
+
+
 
     void OnEnable()
     {

@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour {
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
     [SerializeField] private GameObject mainCamera;
+    [SerializeField] private GameObject sideCamera;
 
     void FixedUpdate()
     {
