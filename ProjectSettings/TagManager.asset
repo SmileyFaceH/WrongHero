@@ -5,21 +5,26 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Glass
-  - Opaque
+  - Arma
+  - Enemy
+  - EnemyWeapon
+  - BuffedSword
+  - Shield
+  - Water
+  - Fire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Glass
   - Opaque
-  - 
-  - 
-  - 
-  - 
+  - Interactable
+  - Rock
+  - ArmaEnemigo
+  - NoBloom
   - 
   - 
   - 
