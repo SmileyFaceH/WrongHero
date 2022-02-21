@@ -11,6 +11,7 @@ public class EnemyIA : MonoBehaviour
     [SerializeField] private float rotationTime;
     [SerializeField] private EnemyType enemyType;
     public BoxCollider enemySwordCollider;
+    [SerializeField] private AnimationAndMovementController playerAnim; 
 
 
     [SerializeField] private enum EnemyType
@@ -72,6 +73,8 @@ public class EnemyIA : MonoBehaviour
 
     public void Chase()
     {
+        
+        
         var distance = Vector3.Distance(transform.position, target.position);
 
         if (distance > detectionDistance) return;
@@ -85,6 +88,11 @@ public class EnemyIA : MonoBehaviour
             transform.position += maxSpeed * Time.deltaTime * -direction;
 
             GetComponent<Animator>().SetTrigger("Attack");
+        }
+
+        if (playerAnim.isShield)
+        {
+            GetComponent<Animator>().SetTrigger("Hitted");
         }
        
         Rotation();
@@ -107,5 +115,7 @@ public class EnemyIA : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, rotationTime * Time.deltaTime);
 
     }
+    
+    
 
 }

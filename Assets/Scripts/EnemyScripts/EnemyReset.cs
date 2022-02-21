@@ -20,8 +20,5 @@ public class EnemyReset : MonoBehaviour
         SkeletonPatrol.transform.position = SkeletonPatrolSpawn.transform.position;
     }
 
-    private void OnDisable()
-    {
-        OnDeathEvents.OnDeath -= EnemySpawnReset;
-    }
+
 }

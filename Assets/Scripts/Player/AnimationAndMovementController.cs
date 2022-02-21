@@ -27,10 +27,12 @@ public class AnimationAndMovementController : MonoBehaviour
     [SerializeField] private BoxCollider swordCollider;
     [SerializeField] private BoxCollider buffedSwordCollider;
 
-    Animator anim;
 
     //Shield
 
+    private bool _boolValue;
+    public bool isShield;
+    private Collider _collider; 
 
 
     
@@ -40,6 +42,7 @@ public class AnimationAndMovementController : MonoBehaviour
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        _collider = GetComponent<Collider>();
 
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
@@ -74,20 +77,51 @@ public class AnimationAndMovementController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(attackingKey) && !isAttacking)
+        if (Input.GetKeyDown(attackingKey) && !isAttacking && !isShield)
         {
             animator.SetTrigger("attacking");
             isAttacking = true;
             playerInput.CharacterControls.Move.Disable();
         }
+        
+        if (Input.GetKeyDown(KeyCode.Mouse1) && !isAttacking)
+        {
+            SetBool();
+            isShield = true;
+            playerInput.CharacterControls.Move.Disable();
+            characterController.detectCollisions = false; 
+
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            SetBool();
+            isShield = false;
+            characterController.detectCollisions = true; 
+            playerInput.CharacterControls.Move.Enable();
+        }
+         
     }
+
+    private void setAttackBool()
+    {
+        isAttacking = false; 
+    }
+
+
+    private void SetBool()
+    {
+        _boolValue = !_boolValue;
+
+        animator.SetBool("isShield", _boolValue);
+      
+    }
+
 
 
     public void StopAttacking()
     {
         playerInput.CharacterControls.Move.Enable();
-        isAttacking = false;
-            
 
     }
 
@@ -95,9 +129,9 @@ public class AnimationAndMovementController : MonoBehaviour
     {
         if (other.gameObject.tag == "EnemyWeapon")
         {
-            if (anim != null)
+            if (animator != null)
             {
-                anim.Play("GetHit");
+                animator.Play("GetHit");
             }
         }
     }

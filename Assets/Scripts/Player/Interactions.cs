@@ -32,7 +32,7 @@ public class Interactions : MonoBehaviour
     void Update() 
     {
 
-        if (interactable && Input.GetKeyDown(KeyCode.F))
+        if (interactable && Input.GetKeyDown(KeyCode.E))
         {
             Interact();
         }

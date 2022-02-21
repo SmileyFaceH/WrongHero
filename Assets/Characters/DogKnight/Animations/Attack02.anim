@@ -12209,15 +12209,6 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.5666667
-        value: -0.00000091069177
-        inSlope: 0.0000085377615
-        outSlope: 0.0000085377615
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
         time: 0.6
         value: 0.0000003415094
         inSlope: 3.274181e-11
@@ -12227,10 +12218,10 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.6333334
+        time: 0.6333333
         value: -0.00000091069177
-        inSlope: -0.00000853771
-        outSlope: -0.00000853771
+        inSlope: 0.0000085377615
+        outSlope: 0.0000085377615
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
@@ -27417,15 +27408,6 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.5666667
-        value: -0.00000091069177
-        inSlope: 0.0000085377615
-        outSlope: 0.0000085377615
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
         time: 0.6
         value: 0.0000003415094
         inSlope: 3.274181e-11
@@ -27435,10 +27417,10 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.6333334
+        time: 0.6333333
         value: -0.00000091069177
-        inSlope: -0.00000853771
-        outSlope: -0.00000853771
+        inSlope: 0.0000085377615
+        outSlope: 0.0000085377615
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
@@ -50488,6 +50470,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.6
     functionName: StopAttacking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.8333333
+    functionName: setAttackBool
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

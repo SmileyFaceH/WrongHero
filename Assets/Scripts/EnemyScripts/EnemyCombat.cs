@@ -8,6 +8,8 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField] private float maxDistance;
     [SerializeField] private Animator anim;
     public EnemyIA enemyIa;
+    private bool _enemyBoolValue;
+    
 
 
 
@@ -56,8 +58,14 @@ public class EnemyCombat : MonoBehaviour
         
         if (other.gameObject.tag == "Shield")
         {
-            enemyIa.enemySwordCollider.GetComponent<BoxCollider>().enabled = false;
-            print("Blocked");
+            SetEnemyBool();
         }
+    }
+
+    private void SetEnemyBool()
+    {
+        _enemyBoolValue = !_enemyBoolValue;
+
+        anim.SetBool("blocked", _enemyBoolValue); 
     }
 }
