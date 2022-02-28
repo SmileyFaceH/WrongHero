@@ -189,6 +189,7 @@
      <Compile Include="Assets\Packages\Standard Assets\Characters\RollerBall\Scripts\BallUserControl.cs" />
      <Compile Include="Assets\Packages\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
      <Compile Include="Assets\Packages\Standard Assets\ParticleSystems\Scripts\Hose.cs" />
+     <Compile Include="Assets\Scripts\General Scripts\PauseMenu.cs" />
      <None Include="Assets\Packages\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
